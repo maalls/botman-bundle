@@ -25,19 +25,14 @@ BOTFRAMEWORK_PASSWORD=*****************
 Create the bot via autowiring:
 
 ```php
-
     // in src/Service/MyService.php
-
     function __construct(\Maalls\BotManBundle\Service\Factory $factory) {
-
         $bot = $factory->create(); // \BotMan\BotMan\BotMan with BotFramwork driver.
-
         $bot->hears("(.*)", function($bot, $message) {
 
             $bot->reply("Anyway, hello.");
 
         });
-
     }
 ```
 
