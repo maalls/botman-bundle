@@ -14,7 +14,7 @@ Install the symfoy bundle using composer
 composer require maalls/botman-bundle
 ```
 
-Add your bot framework credentials.
+Add the bot framework credentials in the .env file
 ```.env
 BOTFRAMEWORK_APP_ID=*******************
 BOTFRAMEWORK_PASSWORD=*****************
@@ -30,7 +30,7 @@ Create the bot via autowiring:
 
     function __construct(\Maalls\BotManBundle\Service\Factory $factory) {
 
-        $bot = $factory->createBot(); // \BotMan\BotMan\BotMan with BotFramwork driver.
+        $bot = $factory->create(); // \BotMan\BotMan\BotMan with BotFramwork driver.
 
         $bot->hears("(.*)", function($bot, $message) {
 
