@@ -2,6 +2,11 @@
 
 This bundle currently only work for the Microsoft botframework.
 
+# Requirement
+
+Symfony 4
+
+
 # Installation
 
 Install the symfoy bundle using composer
