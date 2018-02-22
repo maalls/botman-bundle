@@ -41,7 +41,7 @@ Create the bot via autowiring:
         $bot = $factory->createBotFramework(["botman" => ["conversation_cache_time" => 5]]); 
 
         // OR with a specific driver
-        $bot = $factory->create(z\BotMan\Drivers\Telegram\TelegramDriver::class, ["telegram" => ["token" => "xxxx"]]);
+        $bot = $factory->create(\BotMan\Drivers\Telegram\TelegramDriver::class, ["telegram" => ["token" => "xxxx"]]);
 
         $bot->hears("(.*)", function($bot, $message) {
 
