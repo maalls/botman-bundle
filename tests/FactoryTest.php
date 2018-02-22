@@ -10,7 +10,7 @@ class BotFactoryTest extends TestCase
 {
     public function testCreate()
     {
-        $factory = new Factory('', '');
+        $factory = new Factory('', '', __dir__ . "/cache_dir");
         $bot = $factory->create();
         $this->assertTrue($bot instanceof \BotMan\BotMan\BotMan);
     }
