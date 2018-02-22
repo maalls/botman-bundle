@@ -1,3 +1,5 @@
+This bundle helps you configure and create BotMan within the symfony framework.
+
 # Requirement
 
 Symfony 4, php 7+
@@ -15,12 +17,11 @@ Add the bot config in the config/service.yaml as parameter
 
 parameters:
     botman:
-        config:
-            botman:
-                conversation_cache_time: 30
-            botframework:
-                app_id: xxxxxxxxxx
-                app_key: xxxxxxxxxx
+        botman:
+            conversation_cache_time: 30
+        botframework:
+            app_id: xxxxxxxxxx
+            app_key: xxxxxxxxxx
 
 
 ```

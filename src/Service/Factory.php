@@ -13,7 +13,7 @@ class Factory {
     public function __construct($config, $cache_dir) 
     {
 
-        $this->config = $config;
+        $this->config = $config["config"];
         $this->cache_dir = $cache_dir;
 
     }

@@ -12,5 +12,5 @@ services:
 
     Maalls\BotManBundle\Service\Factory:
       arguments:
-        $config: '%botman.config%'
+        $config: '%botman%'
         $cache_dir: '%kernel.cache_dir%'
