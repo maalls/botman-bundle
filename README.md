@@ -1,10 +1,6 @@
-# Warning
-
-This bundle currently only work for the Microsoft botframework.
-
 # Requirement
 
-Symfony 4
+Symfony 4, php 7+
 
 
 # Installation
