@@ -30,7 +30,7 @@ class Factory {
             ],
         ];
         $cacheDriver = new DoctrineCache(new FilesystemCache($this->cache_dir));
-        return \BotMan\BotMan\BotManFactory::create($config);
+        return \BotMan\BotMan\BotManFactory::create($config, $cacheDriver);
 
     }
 
