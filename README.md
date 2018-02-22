@@ -14,10 +14,19 @@ Install the symfoy bundle using composer
 composer require maalls/botman-bundle
 ```
 
-Add the bot framework credentials in the .env file
-```.env
-BOTFRAMEWORK_APP_ID=*******************
-BOTFRAMEWORK_PASSWORD=*****************
+Add the bot config in the config/service.yaml as parameter
+``` yaml
+
+parameters:
+    botman:
+        config:
+            botman:
+                conversation_cache_time: 30
+            botframework:
+                app_id: xxxxxxxxxx
+                app_key: xxxxxxxxxx
+
+
 ```
 
 # Example
@@ -27,7 +36,16 @@ Create the bot via autowiring:
 ```php
     // in src/Service/MyService.php
     function __construct(\Maalls\BotManBundle\Service\Factory $factory) {
-        $bot = $factory->create(); // \BotMan\BotMan\BotMan with BotFramwork driver.
+        
+        // Create BotMan with BotFramework Driver.
+        $bot = $factory->createBotFramework(); // \BotMan\BotMan\BotMan
+
+        // Config can be added or overwritten
+        $bot = $factory->createBotFramework(["botman" => ["conversation_cache_time" => 5]]); 
+
+        // OR with a specific driver
+        $bot = $factory->create(z\BotMan\Drivers\Telegram\TelegramDriver::class, ["telegram" => ["token" => "xxxx"]]);
+
         $bot->hears("(.*)", function($bot, $message) {
 
             $bot->reply("Anyway, hello.");

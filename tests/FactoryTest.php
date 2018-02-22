@@ -8,10 +8,13 @@ use Maalls\BotManBundle\Service\Factory;
 
 class BotFactoryTest extends TestCase
 {
-    public function testCreate()
-    {
-        $factory = new Factory('', '', __dir__ . "/cache_dir");
-        $bot = $factory->create();
+    public function testCreateBotFramework()
+    {   
+        
+        $config = ["botframework" => ["app_id" => "lllll", "app_key" => "llllll"]];
+        $factory = new Factory($config, __dir__ . "/cache_dir");
+        $bot = $factory->createBotFramework();
         $this->assertTrue($bot instanceof \BotMan\BotMan\BotMan);
+
     }
 }

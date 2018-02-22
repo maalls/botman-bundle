@@ -10,25 +10,26 @@ use Doctrine\Common\Cache\FilesystemCache;
 class Factory {
 
 
-    public function __construct($application_id, $password, $cache_dir) {
+    public function __construct($config, $cache_dir) 
+    {
 
-        $this->application_id = $application_id;
-        $this->password = $password;
-
+        $this->config = $config;
         $this->cache_dir = $cache_dir;
 
     }
 
-    public function create() {
+    public function createBotFramework($config = [])
+    {
 
-        DriverManager::loadDriver(\BotMan\Drivers\BotFramework\BotFrameworkDriver::class);
+        return $this->create(\BotMan\Drivers\BotFramework\BotFrameworkDriver::class, $config);
 
-        $config = [
-            'botframework' => [
-                'app_id' => $this->application_id,
-                'app_key' => $this->password,
-            ],
-        ];
+    }
+
+    public function create($driver_class, $config) {
+
+        $config = $this->config + $config;
+        DriverManager::loadDriver($driver_class);
+
         $cacheDriver = new DoctrineCache(new FilesystemCache($this->cache_dir));
         return \BotMan\BotMan\BotManFactory::create($config, $cacheDriver);
 
